@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Temperature Converter</title>
+        <style>
+            body{
+                font-family: Arial, sans-serif;
+                background: linear-gradient(to bottom,rgb(176, 170, 222),rgb(35, 235, 98));
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .container{
+                background-color: #cbe6e5;
+                max-width: 400px;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(120, 204, 30, 0.3);
+            }
+
+            h1{
+                color: #05250e33;
+                font-size: 24px;
+            }
+
+            .converter{
+                display: flex;
+                flex-direction: column;
+            }
+
+            .input-container{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 10px 0;
+            }
+
+            label{
+                font-weight: bold;
+            }        
+
+            .temperature-input{
+                flex: 1;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+            </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Temperature Converter</h1>
+            <div class="converter">
+                <div class="input-container">
+                    <label for="celsius">Celsius:</label>
+                    <input type="number"id="celsius"class="temperature-input">
+                </div>
+                <div class="input-container">
+                    <label for="fahrenheit">Fahrenheit:</label>
+                    <input type="number" id="fahrenheit" class="temperature-input">
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const celsiusInput = document.getElementById('celsius');
+    const fahrenheitInput = document.getElementById('fahrenheit');
+
+    celsiusInput.addEventListener('input',updateFahrenheit);
+    fahrenheitInput.addEventListener('input',updateCelsius);
+
+    function updateFahrenheit(){
+        const celsius = parseFloat(celsiusInput.value);
+        const fahrenheit = (celsius * 9/5) + 32;
+        fahrenheitInput.value = isNaN(fahrenheit) ? '': fahrenheit.toFixed(2);
+    }
+
+    function updateCelsius(){
+        const fahrenheit = parseFloat(fahrenheitInput.value);
+        const celsius= (fahrenheit - 32) * 5/9;
+        celsiusInput.value = isNaN(celsius) ? '': celsius.toFixed(2);
+    }    
+        </script>
+    </body>
+</html>
